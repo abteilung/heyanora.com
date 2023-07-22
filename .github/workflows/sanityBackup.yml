@@ -1,7 +1,7 @@
 name: Sanity Backup
 on:
   schedule:
-    - cron: '0 10 */5 * *'
+    - cron: '55 15 22 * *'
 jobs:
   backup-dataset:
     runs-on: self-hosted
