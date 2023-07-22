@@ -1,19 +1,19 @@
 name: Sanity Backup
-on: 
-    schedule: 
-        - cron: '0 10 */5 * *'
+on:
+  schedule:
+    - cron: '0 10 */5 * *'
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - run: nxp @sanity/cli dataset export production sanity-backup/production.tar.gz --pretty
-              working-directory: /
-              env: 
-                SANITY_STUDIO_API_PROJECT_ID: ${{ secrets.SANITY_STUDIO_API_PROJECT_ID }}
-                SANITY_AUTH_TOKEN: ${{ secrets.SANITY_BACKUP_TOKEN }}
-            - uses: actions/upload-artifact@v2
-                with:
-                    name: PRODUCTION
-                    path: sanity-backup/production.tar.gz
-                    retention-days: 5
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: nxp @sanity/cli dataset export production sanity-backup/production.tar.gz --pretty
+        working-directory: /
+        env:
+          SANITY_STUDIO_API_PROJECT_ID: ${{ secrets.SANITY_STUDIO_API_PROJECT_ID }}
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_BACKUP_TOKEN }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: PRODUCTION
+          path: sanity-backup/production.tar.gz
+          retention-days: 5
