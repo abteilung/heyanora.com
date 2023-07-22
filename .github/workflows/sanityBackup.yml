@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: nxp @sanity/cli dataset export production sanity-backup/production.tar.gz --pretty
+      - run: nxp @sanity/cli dataset export production sanity-backup/production.tar.gz
         working-directory: /
         env:
           SANITY_STUDIO_API_PROJECT_ID: ${{ secrets.SANITY_STUDIO_API_PROJECT_ID }}
