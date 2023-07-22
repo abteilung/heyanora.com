@@ -1,7 +1,7 @@
 name: Sanity Backup
 on:
   schedule:
-    - cron: '0 10 */5 * *'
+    - cron: '*/5 * * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
