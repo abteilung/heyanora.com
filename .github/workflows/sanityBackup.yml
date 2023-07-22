@@ -4,7 +4,7 @@ on:
     - cron: '0 10 */5 * *'
 jobs:
   backup-dataset:
-    runs-on: ubuntu-18.04
+    runs-on: self-hosted
     name: Backup dataset
     steps:
       - uses: actions/checkout@v2
