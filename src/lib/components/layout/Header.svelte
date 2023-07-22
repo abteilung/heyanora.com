@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { fade } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
 
 	import Logo from '$lib/components/Logo.svelte';
 	import AnimatedHamburger from '$lib/components/AnimatedHamburger.svelte';
@@ -16,8 +17,8 @@
 <header>
 	{#if isLoaded}
 		<div transition:fade={{ duration: 250 }} class="container">
-			<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-12">
-				<div class="hidden sm:block placeholder:navi md:col-span-2">
+			<div class="grid grid-cols-2 gap-12 sm:grid-cols-3 md:grid-cols-5">
+				<div class="placeholder:navi hidden sm:block md:col-span-2">
 					<nav>
 						<ul>
 							<li>
@@ -31,13 +32,14 @@
 				</div>
 				<div class="relative flex items-center justify-evenly text-center">
 					<a
+						in:fade={{ duration: 250, delay: 250 }}
 						href="/"
-						class="block mx-auto w-32 md:w-48 lg:w-72 xl:w-96 absolute top-0 z-50 sm:block"
+						class="absolute top-0 z-50 mx-auto block w-32 sm:block md:w-48 lg:w-72 xl:w-96"
 						><Logo class="" /></a
 					>
 				</div>
-				<div class="sm:hidden justify-self-end relative z-30"><AnimatedHamburger /></div>
-				<div class="hidden sm:block navi md:col-span-2">
+				<div class="relative z-30 justify-self-end sm:hidden"><AnimatedHamburger /></div>
+				<div class="navi hidden sm:block md:col-span-2">
 					<nav class="flex justify-end">
 						<ul>
 							<li>

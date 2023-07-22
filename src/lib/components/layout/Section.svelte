@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { fade } from 'svelte/transition';
+	import { fly, fade } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
+
+	import classNames from 'classnames';
+	import IntersectionObserver from '$lib/components/IntersectionObserver.svelte';
 
 	export let title: string = '';
 
@@ -17,17 +21,29 @@
 	export { sectionClass as class };
 </script>
 
-<section class={sectionClass}>
-	{#if isLoaded}
-		<div class="bgColor" transition:fade={{ duration: 500 }}>
-			<div class="backdrop" />
+<IntersectionObserver let:intersecting top={200} once={true}>
+	<section class={classNames('overflow-hidden', sectionClass)}>
+		{#if intersecting}
+			<div
+				class="bgColor"
+				transition:fly={{
+					duration: 500,
+					delay: 750,
+					easing: cubicOut,
+					x: 0,
+					y: -500,
+					opacity: 0
+				}}
+			>
+				<div class="backdrop" />
+			</div>
+		{/if}
+		<div class="content container">
+			{#if title}<h2 class="text-center">{title}</h2>{/if}
+			<slot />
 		</div>
-	{/if}
-	<div class="container content">
-		{#if title}<h2 class="text-center">{title}</h2>{/if}
-		<slot />
-	</div>
-</section>
+	</section>
+</IntersectionObserver>
 
 <style lang="postcss">
 	section {
