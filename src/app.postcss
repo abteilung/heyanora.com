@@ -1,0 +1,272 @@
+/* Write your global styles here, in PostCSS syntax */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	@font-face {
+		font-family: 'saonara';
+		font-weight: 200;
+		src: url(/fonts/MADE-SAONARA-PERSONAL-USE.woff) format('woff');
+	}
+
+	body {
+		@apply font-sans text-base text-black;
+	}
+
+	h1,
+	.h1,
+	h2.h1,
+	h3.h1,
+	h4.h1 {
+		/* General Styles */
+		@apply font-logo;
+		@apply leading-[1.2em];
+		@apply mb-[10px] md:mb-[16px];
+
+		/* smallest Screens */
+		@apply text-2xl;
+
+		/* sm and larger */
+		@apply sm:text-4xl;
+	}
+
+	h2,
+	.h2,
+	h1.h2,
+	h4.h2 {
+		/* General Styles */
+		@apply font-logo;
+		@apply leading-[1.2em];
+		@apply mb-[10px] md:mb-[16px];
+
+		/* smallest Screens */
+		@apply text-[21px];
+
+		/* sm and larger */
+		@apply sm:text-3xl;
+	}
+
+	h3,
+	.h3,
+	h1.h3,
+	h2.h3,
+	.h4.h3 {
+		/* General Styles */
+		@apply font-logo;
+		@apply leading-[1.2em];
+		@apply mb-[10px] md:mb-[16px];
+
+		/* smallest Screens */
+		@apply text-[21px];
+
+		/* md and larger */
+		@apply md:text-2xl;
+	}
+
+	h4,
+	.h4,
+	h1.h4,
+	h2.h4,
+	h3.h4 {
+		/* General Styles */
+		@apply font-sans font-normal uppercase;
+		@apply leading-[1.4em];
+		@apply mb-[30px] md:mb-[50px];
+
+		/* smallest Screens */
+		@apply text-[14px];
+
+		/* md and larger */
+		@apply md:text-[16px];
+
+		/* lg and larger */
+		@apply lg:text-[18px];
+	}
+
+	h5,
+	.h5,
+	h1.h5,
+	h2.h5,
+	h3.h5 {
+		/* General Styles */
+		@apply font-sans font-normal;
+		@apply leading-[1.5em];
+
+		/* smallest Screens */
+		@apply text-[16px];
+
+		/* md and larger */
+		@apply md:text-[18px];
+
+		/* lg and larger */
+		@apply lg:text-[20px];
+	}
+
+	h6,
+	.h6,
+	h1.h6,
+	h2.h6,
+	h3.h6 {
+		/* General Styles */
+		@apply font-sans font-normal;
+		@apply leading-[1.3em];
+
+		/* smallest Screens */
+		@apply text-[12px];
+
+		/* md and larger */
+		@apply md:text-[14px];
+	}
+
+	p {
+		/* General Styles */
+		@apply mb-[1.5em] leading-[1.5em];
+
+		/* smallest Screens */
+		@apply text-[16px];
+
+		/* md and larger */
+		@apply md:text-[20px];
+	}
+
+	.lead,
+	p .lead,
+	.lead p {
+		/* General Styles */
+		@apply mb-[1.5em] leading-[1.3em];
+
+		/* smallest Screens */
+		@apply text-[20px];
+
+		/* sm and larger */
+		@apply sm:text-[25px];
+	}
+
+	.caption {
+		/* General Styles */
+		@apply leading-[1.5em] opacity-40;
+
+		/* smallest Screens */
+		@apply text-[12px];
+
+		/* md and larger */
+		@apply md:text-[14px];
+	}
+
+	label,
+	.label {
+		/* General Styles */
+		@apply mb-2 inline-block uppercase;
+
+		/* smallest Screens */
+		@apply text-[12px];
+
+		/* md and larger */
+		@apply md:text-[14px];
+	}
+
+	blockquote {
+		/* General Styles */
+		/* @apply leading-[1.2em];
+			@apply font-heading;
+			@apply text-[24px]; */
+	}
+
+	.navItem {
+		/* smallest Screens */
+		@apply text-[16px];
+
+		/* md and larger */
+		@apply md:text-[18px];
+	}
+
+	.button {
+		/* smallest Screens */
+		@apply text-[14px];
+
+		/* sm and larger */
+		@apply sm:text-[14px];
+
+		/* md and larger */
+		@apply md:text-[16px];
+
+		/* lg and larger */
+		@apply lg:text-[18px];
+	}
+
+	b,
+	strong {
+		@apply font-semibold;
+	}
+
+	.gridGap {
+		@apply gap-[30px];
+		@apply lg:gap-[50px];
+	}
+
+	.modal-open {
+		@apply overflow-hidden;
+	}
+
+	/* Layout Stuff */
+
+	.wrapper {
+		@apply mx-auto overflow-x-clip shadow-xl md:flex 2xl:max-w-[1920px];
+		/* This is not good */
+		/* @apply overflow-x-clip; */
+	}
+
+	/* .contentWrapper {
+		@apply flex flex-col max-w-full bg-white min-h-fit;
+	} */
+
+	.contentArea {
+		@apply relative flex-grow;
+		@apply px-[20px] sm:px-[30px] md:px-[50px] xl:px-[100px] 2xl:px-[150px];
+	}
+
+	.mainContent {
+		/* @apply grid h-[1920px] grid-cols-6 sm:grid-cols-12; */
+		@apply my-[20px] sm:my-[30px] md:my-[50px] xl:my-[100px] 2xl:my-[150px];
+	}
+
+	#header {
+		@apply relative bg-light text-left;
+		@apply h-[225px] py-[30px] sm:h-[350px] lg:py-[40px] xl:h-[450px] xl:py-[50px];
+	}
+
+	.headerContent {
+		@apply relative z-10 lg:container;
+		@apply px-[20px] sm:px-[30px] md:px-[50px] xl:px-[100px] 2xl:px-[150px];
+	}
+
+	#footer {
+		@apply mx-auto flex-none 2xl:max-w-[1920px];
+		@apply bg-black;
+	}
+
+	.footerContent {
+		@apply h-[350px] p-[20px] sm:p-[30px] md:p-[50px];
+		@apply relative z-10 2xl:container;
+	}
+
+	.navBar {
+		@apply sticky top-0 z-50 h-16 flex-none shadow-xl sm:h-24 md:flex md:flex-col;
+		@apply h-fit w-full bg-white md:min-h-screen;
+		@apply px-[20px] md:p-[30px] lg:p-[40px] xl:p-[50px];
+		@apply md:w-[260px] xl:w-[320px] 2xl:w-[384px];
+	}
+
+	ul.ul {
+		@apply list-inside list-disc;
+	}
+
+	ol.ol {
+		@apply list-inside list-decimal;
+	}
+
+	a {
+		@apply transition-all duration-150;
+	}
+}

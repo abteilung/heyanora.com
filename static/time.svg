@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="79px" height="62px" viewBox="0 0 79 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>946DD816-8947-4DCC-93C1-8B1A3922E9D9</title>
+    <defs>
+        <radialGradient cx="100%" cy="0%" fx="100%" fy="0%" r="153.659074%" gradientTransform="translate(1.000000,0.000000),scale(1.000000,0.857143),rotate(130.601295),translate(-1.000000,-0.000000)" id="radialGradient-1">
+            <stop stop-color="#C1A652" offset="0%"></stop>
+            <stop stop-color="#EACE78" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="Angebot" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Body-Healing" transform="translate(-845.000000, -536.000000)">
+            <g id="Group-3" transform="translate(745.000000, 537.000000)">
+                <g id="Group" transform="translate(101.000000, 0.000000)">
+                    <path d="M48,32 C54.627417,32 60,34.6862915 60,38 L60,38 L60,54 C60,57.314 54.627,60 48,60 C41.373,60 36,57.314 36,54 L36,54 L36,38 L36.0047701,37.8291714 C36.1856345,34.5944593 41.4868488,32 48,32 Z" id="Combined-Shape" fill="url(#radialGradient-1)"></path>
+                    <g id="money-time" stroke="#744659" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                        <path d="M36,46 C36,49.314 41.373,52 48,52 C54.627,52 60,49.314 60,46" id="Path"></path>
+                        <path d="M36,54 C36,57.314 41.373,60 48,60 C54.627,60 60,57.314 60,54" id="Path"></path>
+                        <ellipse id="Oval" cx="48" cy="38" rx="12" ry="6"></ellipse>
+                        <polyline id="Path" points="26 12 26 26 11 26"></polyline>
+                        <path d="M30.001,51.694 C28.696,51.896 27.36,52 26,52 C11.641,52 0,40.359 0,26 C0,11.641 11.641,0 26,0 C40.359,0 52,11.641 52,26" id="Path" stroke-dasharray="0,5"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
