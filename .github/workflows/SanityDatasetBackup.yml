@@ -1,4 +1,4 @@
-name: Sanity Backup
+name: Sanity Dataset Backup
 on:
   schedule:
     - cron: '*/5 * * * *'
