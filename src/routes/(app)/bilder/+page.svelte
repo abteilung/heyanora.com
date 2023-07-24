@@ -45,18 +45,18 @@
 
 {#if allImages}
 	<Section container title="Beispielbilder">
-		<div class="pswp-gallery space-y-1" id={galleryID}>
-			<div class="flex space-x-1">
+		<div class="pswp-gallery space-y-4" id={galleryID}>
+			<div class="flex space-x-4">
 				{#each allImages as image, i}
 					{#if i <= 3}
-						<Image image={image.image} width={480} />
+						<Image fitImage image={image.image} width={1200} class="rounded-lg" />
 					{/if}
 				{/each}
 			</div>
-			<div class="flex space-x-1">
+			<div class="flex space-x-4">
 				{#each allImages as image, i}
 					{#if i > 3}
-						<Image image={image.image} width={480} />
+						<Image fitImage image={image.image} width={1200} class="rounded-lg" />
 					{/if}
 				{/each}
 			</div>

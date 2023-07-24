@@ -7,8 +7,8 @@
 
 	export let image: any;
 	export let alt: string;
-	export let width: number = image.asset?.metadata?.dimensions?.width || 1640;
-	export let height: number = image.asset?.metadata?.dimensions?.height || 1230;
+	export let width: number = image.metadata.dimensions.width || 1640;
+	export let height: number = image.metadata.dimensions.height || 1230;
 	export let aspectRatio: number = 1.777;
 	export let additionalClass: string;
 
@@ -22,9 +22,8 @@
 	let isLoaded: boolean = false;
 
 	// Calculate height from width and Aspect Ratio
-	$: calculatedHeight = Math.floor(
-		width / (image && image.customRatio ? image.customRatio : aspectRatio)
-	);
+	$: calculatedHeight =
+		width / (image && image.customRatio ? image.customRatio.toFixed(3) : aspectRatio.toFixed(3));
 
 	onMount(() => {
 		isLoaded = true;
@@ -34,40 +33,51 @@
 	$: src =
 		fitImage !== true
 			? image
-				? urlForImage(image, width, calculatedHeight)
+				? urlForImage(image, width, Math.floor(calculatedHeight))
 				: dummySrc
-			: urlForImage(image, width, height);
+			: urlForImage(
+					image,
+					width,
+					Math.floor((width / image.metadata.dimensions.width) * image.metadata.dimensions.height)
+			  );
 	$: largeSrc =
 		fitImage !== true
 			? image
-				? urlForImage(image, width * 4, calculatedHeight * 4)
+				? urlForImage(image, width, Math.floor(calculatedHeight))
 				: dummySrc
-			: urlForImage(image, width * 4, height) * 4;
+			: urlForImage(
+					image,
+					width,
+					Math.floor(
+						(width / image.metadata.dimensions.width) * Math.floor(image.metadata.dimensions.height)
+					)
+			  );
 </script>
 
 {#if isLoaded}
-	<a
-		on:click|preventDefault
-		href={largeSrc}
-		data-pswp-width={fitImage !== true ? width * 4 : image.asset?.metadata?.dimensions?.width * 4}
-		data-pswp-height={fitImage !== true
-			? calculatedHeight * 4
-			: image.asset?.metadata?.dimensions?.height * 4}
-		target="_blank"
-		rel="noreferrer"
-	>
-		<div
-			in:fade={{ duration: 200 }}
-			out:fade={{ duration: 200 }}
-			class={classNames('image', 'relative w-full overflow-hidden', additionalClass)}
-			style={`
+	<div
+		in:fade={{ duration: 200 }}
+		out:fade={{ duration: 200 }}
+		class={classNames('image', 'relative w-full overflow-hidden', additionalClass)}
+		style={`
 		background-size: cover; 
 		background-image: url(${fitImage !== true && image && image.lqip ? image.lqip : ''}); 
 		background-color: ${fitImage !== true && image && image.bgColor ? image.bgColor : ''};
 		aspect-ratio: ${fitImage !== true && image && image.customRatio ? image.customRatio : aspectRatio};
 		`}
-		>
-			{#if image || dummySrc}
+	>
+		{#if image || dummySrc}
+			<a
+				on:click|preventDefault
+				data-pswp-width={width}
+				data-pswp-height={fitImage !== true
+					? calculatedHeight
+					: (width / image.metadata.dimensions.width) *
+					  Math.floor(image.metadata.dimensions.height)}
+				target="_blank"
+				rel="noreferrer"
+				href={largeSrc}
+			>
 				<img
 					{src}
 					alt={alt || image.alt}
@@ -76,17 +86,24 @@
 							? 'absolute top-1/2 -translate-y-1/2 object-cover object-center'
 							: 'h-full w-full '
 					)}
-					width={`${fitImage !== true ? width : image.asset?.metadata?.dimensions?.width}px"`}
+					{width}
 					height={`${
-						fitImage !== true ? calculatedHeight : image.asset?.metadata?.dimensions?.height
-					}px`}
+						fitImage !== true
+							? calculatedHeight
+							: (width / image.metadata.dimensions.width) *
+							  Math.floor(image.metadata.dimensions.height)
+					}`}
 					style={`aspect-ratio: ${
-						fitImage !== true ? (image && image.customRatio ? image.customRatio : aspectRatio) : ''
+						fitImage !== true
+							? image && image.customRatio
+								? image.customRatio
+								: aspectRatio
+							: image.metadata.dimensions.aspectRatio.toFixed(3)
 					} `}
 				/>
-			{:else}
-				No Source set
-			{/if}
-		</div>
-	</a>
+			</a>
+		{:else}
+			No Source set
+		{/if}
+	</div>
 {/if}

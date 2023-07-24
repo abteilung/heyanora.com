@@ -83,9 +83,10 @@ const link = `
 // Construct our "image meta" GROQ
 // Is it really image->altText?
 
-const imageMeta = `
+const imageMeta = groq`
   "alt": coalesce(image.alt, image->altText),
   "asset": image.asset ->,
+  image,
   "src": image,
   "customRatio": image.customRatio,
   "type": image.asset->mimeType,
@@ -306,7 +307,9 @@ export const getProductBySlug = groq`
 // Images
 export const getAllImages = groq`
 *[(_type == 'bild') && ${visibilityChecker}] | order(_updatedAt desc) {
-  title, image, description
+  "image": image.asset ->,
+  title,
+  description
 }`;
 
 // Site Config specific Queries
