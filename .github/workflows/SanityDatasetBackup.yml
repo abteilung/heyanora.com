@@ -8,6 +8,9 @@ jobs:
   backup-dataset:
     runs-on: ubuntu-latest
     name: Backup dataset
+    # defaults:
+    #   run:
+    #     working-directory: src/lib/config/sanity
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3

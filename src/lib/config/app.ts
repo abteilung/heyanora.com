@@ -1,5 +1,5 @@
 const app = {
-	appName: 'Ades.ch | Shopify'
+	appName: 'Heryanora.com'
 };
 
 export { app as default };
