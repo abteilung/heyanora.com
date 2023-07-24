@@ -1,80 +1,72 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { fly, fade } from 'svelte/transition';
-	import { cubicOut } from 'svelte/easing';
-
 	import classNames from 'classnames';
-	import IntersectionObserver from '$lib/components/IntersectionObserver.svelte';
 
-	export let title: string = '';
+	import Button from '$lib/components/Button.svelte';
 
-	let isLoaded: boolean = false;
+	export let settings: any = {};
 
-	onMount(() => {
-		setTimeout(() => {
-			isLoaded = true;
-		}, 0);
-	});
+	export let title: string = (settings.title = '');
+	export let linkText: string = settings.linkText || 'Alles anzeigen';
+	export let href: string = settings.href || '';
 
-	let sectionClass: string = '';
+	export let additionalClass: string = '';
+	export { additionalClass as class };
 
-	export { sectionClass as class };
+	export let size: 'none' | 'small' | 'medium' | 'large' = 'medium';
+	export let bgColor: 'white' | 'light' | 'black' | 'primary' | 'accent' =
+		settings.backgroundColor || 'white';
+	export let container: boolean = settings.container || false;
+	export let narrow: boolean = settings.narrow || false;
+
+	$: backgroundColor = bgColor ? `bg-${bgColor}` : '';
+	$: colorMode = bgColor === 'black' ? 'dark' : '';
 </script>
 
-<IntersectionObserver let:intersecting top={200} once={true}>
-	<section class={classNames('overflow-hidden', sectionClass)}>
-		{#if intersecting}
-			<div
-				class="bgColor"
-				transition:fly={{
-					duration: 500,
-					delay: 750,
-					easing: cubicOut,
-					x: 0,
-					y: -500,
-					opacity: 0
-				}}
-			>
-				<div class="backdrop" />
-			</div>
-		{/if}
-		<div class="content container">
-			{#if title}<h2 class="text-center">{title}</h2>{/if}
-			<slot />
+<section class={classNames(size, backgroundColor, colorMode, additionalClass)}>
+	{#if title || href}
+		<div
+			class={classNames(
+				container ? 'container' : '',
+				narrow ? 'narrow-container' : '',
+				'flex items-center justify-between py-12'
+			)}
+		>
+			{#if title}
+				<h2 class="mb-0">{title}</h2>
+			{/if}
+			{#if href}
+				<Button hollow {href}>{linkText}</Button>
+			{/if}
 		</div>
-	</section>
-</IntersectionObserver>
+	{/if}
+	<div class={classNames(container ? 'container' : '', narrow ? 'narrow-container' : '')}>
+		<slot><!-- optional fallback --></slot>
+	</div>
+</section>
+
+<!-- safe listing: -->
+<!-- bg-white bg-black bg-light -->
 
 <style lang="postcss">
-	section {
-		@apply relative min-h-[475px] py-8 sm:py-32;
+	.small {
+		@apply py-12;
+	}
+	.medium {
+		@apply py-24;
+	}
+	.large {
+		@apply py-48;
+	}
+	.none {
+		@apply py-0;
+	}
+	.narrow-container {
+		@apply mx-auto w-2/3;
 	}
 
-	.light {
-		.backdrop {
-			@apply relative -z-10 h-full w-full;
-			@apply bg-divider bg-cover bg-bottom bg-no-repeat;
-		}
-
-		.bgColor {
-			@apply absolute inset-0 isolate z-10;
-			@apply bg-gradient-to-b from-black/20 to-black/10;
-		}
-	}
-
-	.content {
-		@apply relative z-20;
-	}
-
-	nav {
-		ul {
-			@apply flex space-x-12;
-			li {
-				@apply text-lg;
-				a {
-					@apply hover:text-primary;
-				}
-			}
-		}
+	.bg-primary,
+	.bg-black,
+	.bg-accent {
+		@apply text-white;
 	}
 </style>
