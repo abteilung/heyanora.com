@@ -8,6 +8,10 @@ jobs:
   backup-dataset:
     runs-on: ubuntu-latest
     name: Backup dataset
+    defaults:
+      run:
+        working-directory: src/lib/config/sanity
+
     steps:
       - uses: actions/checkout@v3
       - name: Export dataset
@@ -20,7 +24,7 @@ jobs:
         uses: actions/upload-artifact@2
         with:
           name: production-tarball
-          path: backup.tar.gz
+          path: src/lib/config/sanity/backups/backup.tar.gz
           # Fails the workflow if no files are found; defaults to 'warn'
           if-no-files-found: error
           retention-days: 5
