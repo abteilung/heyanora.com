@@ -1,11 +1,28 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import PhotoSwipeLightbox from 'photoswipe/lightbox';
+	import 'photoswipe/style.css';
+
 	import Section from '$lib/components/layout/Section.svelte';
 	import Image from '$lib/components/Image.svelte';
 
+	const galleryID: string = 'gallery';
+
+	onMount(() => {
+		let lightbox = new PhotoSwipeLightbox({
+			gallery: '#' + galleryID,
+			children: 'a',
+			pswpModule: () => import('photoswipe')
+		});
+		lightbox.init();
+	});
 	export let allImages: any[];
 
 	export let data: PageData;
 	$: ({ allImages } = data);
+
+	// Random number betwween 2 and 4
+	$: random = Math.floor(Math.random() * 3) + 2;
 </script>
 
 <Section container>
@@ -28,11 +45,30 @@
 
 {#if allImages}
 	<Section container title="Beispielbilder">
-		{#each allImages as image}
-			{JSON.stringify(image)}
-			{#if image}
-				<Image {image} />
-			{/if}
-		{/each}
+		<div class="pswp-gallery space-y-1" id={galleryID}>
+			<div class="flex space-x-1">
+				{#each allImages as image, i}
+					{#if i <= 3}
+						<Image image={image.image} width={480} />
+					{/if}
+				{/each}
+			</div>
+			<div class="flex space-x-1">
+				{#each allImages as image, i}
+					{#if i > 3}
+						<Image image={image.image} width={480} />
+					{/if}
+				{/each}
+			</div>
+		</div>
 	</Section>
 {/if}
+
+<div class="flex items-stretch bg-red-200">
+	<div class=" bg-red-500 py-12">x</div>
+	<div class=" bg-red-500 py-12">x</div>
+	<div class=" bg-red-500 py-12">x</div>
+</div>
+
+<style lang="postcss">
+</style>

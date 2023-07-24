@@ -112,6 +112,9 @@ devDependencies:
   lucide-react:
     specifier: ^0.233.0
     version: 0.233.0(react@18.2.0)
+  photoswipe:
+    specifier: ^5.3.8
+    version: 5.3.8
   postcss:
     specifier: ^8.4.27
     version: 8.4.27
@@ -4275,6 +4278,11 @@ packages:
 
   /performance-now@2.1.0:
     resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
+
+  /photoswipe@5.3.8:
+    resolution: {integrity: sha512-4vTzOQt8GP4Chsm0s+8j2xDtVHAEN252PxrU12A1zXauNn0zD5HRHgjALKO2GKTyBnTnOrJUOxbV8LTrFIMrYw==}
+    engines: {node: '>= 0.12.0'}
+    dev: true
 
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
