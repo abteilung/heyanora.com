@@ -11,16 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Export dataset
-        uses: sanity-io/github-action-sanity@v0.2-alpha
+      - run: npx @sanity/cli dataset export production backups/backup.tar.gz
         env:
+          SANITY_STUDIO_API_PROJECT_ID: ${{ secrets.SANITY_STUDIO_API_PROJECT_ID }}
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_BACKUP_TOKEN }}
+      - uses: actions/upload-artifact@v2
         with:
-          args: dataset export production backups/backup.tar.gz
-      - name: Upload backup.tar.gz
-        uses: actions/upload-artifact@v2
-        with:
-          name: backup-tarball
-          path: backups/backup.tar.gz
+          name: production
+          path: backup.tar.gz
           # Fails the workflow if no files are found; defaults to 'warn'
           if-no-files-found: error
           retention-days: 5
