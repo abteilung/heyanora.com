@@ -21,7 +21,7 @@ jobs:
         with:
           args: studio dataset export production backup.tar.gz
       - name: Upload backup.tar.gz
-        uses: actions/upload-artifact@3
+        uses: actions/upload-artifact@v3
         with:
           name: production-tarball
           path: src/lib/config/sanity/backups/backup.tar.gz
