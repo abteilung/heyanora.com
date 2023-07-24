@@ -9,9 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Backup dataset
     steps:
-      - name: Export dataset
-        uses: actions/checkout@v2
-        run: npx @sanity/cli dataset export production backups/backup.tar.gz
+      - uses: actions/checkout@v2
+      - run: npx @sanity/cli dataset export production backups/backup.tar.gz
         env:
           SANITY_STUDIO_API_PROJECT_ID: ${{ secrets.SANITY_STUDIO_API_PROJECT_ID }}
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_BACKUP_TOKEN }}
