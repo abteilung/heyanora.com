@@ -28,7 +28,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: production-tarball
-          path: src/lib/config/sanity/backups/backup.tar.gz
+          path: backup.tar.gz
           # Fails the workflow if no files are found; defaults to 'warn'
           if-no-files-found: error
           retention-days: 5

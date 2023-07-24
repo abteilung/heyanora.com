@@ -31,12 +31,6 @@ export default defineType({
 	groups: [
 		{ name: 'site', title: 'Site', description: 'Site settings', default: true, icon: Globe },
 		{ name: 'general', title: 'General', description: 'General settings', icon: Globe },
-		{
-			name: 'entryPages',
-			title: 'Entry Pages',
-			description: 'Entry Pages settings',
-			icon: ShareNetwork
-		},
 		{ name: 'theme', title: 'Theme', description: 'Theme settings', icon: Palette },
 		{ name: 'seo', title: 'SEO', description: 'SEO settings', icon: MagnifyingGlass },
 		{ name: 'dsgvo', title: 'DSGVO', description: 'DSGVO settings', icon: Scales }
@@ -82,49 +76,6 @@ export default defineType({
 			validation: (rule) => rule.required()
 		}),
 
-		// Theme
-		// {
-		//   name: 'themeColor',
-		//   title: 'Theme Color',
-		//   type: 'string',
-		//   description: 'Enter your theme color.',
-		//   group: 'theme',
-		//   initialValue: '#ffffff'
-		// },
-		// {
-		//   name: 'backgroundColor',
-		//   title: 'Background Color',
-		//   type: 'string',
-		//   description: 'Enter your background color.',
-		//   group: 'theme',
-		//   initialValue: '#ffffff'
-		// },
-
-		// SEO
-		// {
-		//   name: 'display',
-		//   title: 'Display',
-		//   type: 'string',
-		//   description: 'Enter your display.',
-		//   group: 'seo'
-		// },
-		// EntryPages
-		defineField({
-			name: 'home',
-			title: 'Home Page',
-			type: 'reference',
-			to: [{ type: 'page' }],
-			description: 'Add Home Page.',
-			group: 'entryPages'
-		}),
-		defineField({
-			name: 'shop',
-			title: 'Shop Page',
-			type: 'reference',
-			to: [{ type: 'page' }],
-			description: 'Add Shop Page.',
-			group: 'entryPages'
-		}),
 		// DSGVO
 		defineField({
 			name: 'imprint',
