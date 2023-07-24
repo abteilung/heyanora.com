@@ -5,7 +5,7 @@ import { colorInput } from '@sanity/color-input';
 // import { copyPastePlugin } from '@superside-oss/sanity-plugin-copy-paste';
 
 import { noteField } from 'sanity-plugin-note-field';
-import app from '../app';
+import app from '../config/app';
 
 /*-------------- PLUGINS --------------*/
 import { visionTool } from '@sanity/vision';

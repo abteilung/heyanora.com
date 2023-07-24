@@ -1,7 +1,7 @@
 // Get Queries from Sanity
-import {getSanityServerClient} from '$lib/config/sanity/client'
-import {getLayoutData} from '$lib/config/sanity/queries'
-import {urlForImage} from '$lib/config/sanity'
+import { getSanityServerClient } from '$lib/sanity/client';
+import { getLayoutData } from '$lib/sanity/queries';
+import { urlForImage } from '$lib/sanity';
 
 // export const prerender = 'auto'
 
@@ -9,19 +9,19 @@ import {urlForImage} from '$lib/config/sanity'
 /** @type {import('@sveltejs/kit').RequestHandler} */
 
 // Get all Data for Sitemap
-export async function GET({req}) {
-  const layoutStuff = await getSanityServerClient(false).fetch(getLayoutData)
+export async function GET({ req }) {
+	const layoutStuff = await getSanityServerClient(false).fetch(getLayoutData);
 
-  // Populate Body
-  const body = sitemap(layoutStuff.siteConfig)
+	// Populate Body
+	const body = sitemap(layoutStuff.siteConfig);
 
-  // Return Response
-  return new Response(body, {
-    headers: {
-      'Cache-Control': `max-age=0, s-maxage=${604800}`,
-      'Content-Type': 'application/json'
-    }
-  })
+	// Return Response
+	return new Response(body, {
+		headers: {
+			'Cache-Control': `max-age=0, s-maxage=${604800}`,
+			'Content-Type': 'application/json'
+		}
+	});
 }
 
 // Create Sitemap
@@ -44,4 +44,4 @@ const sitemap = (siteConfig) => `{
   "background_color": "${siteConfig.backgroundColor ? siteConfig.backgroundColor : '#ffffff'}",
   "display": "${siteConfig.display ? siteConfig.display : 'standalone'}"
 }
-`
+`;

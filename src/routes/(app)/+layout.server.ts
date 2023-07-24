@@ -1,5 +1,5 @@
-import { client } from '$lib/config/sanity/client';
-import { getLayoutData } from '$lib/config/sanity/queries';
+import { client } from '$lib/sanity/client';
+import { getLayoutData } from '$lib/sanity/queries';
 
 // Make it prerendering and SSR
 export const prerender = true;

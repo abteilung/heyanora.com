@@ -303,22 +303,10 @@ export const getProductBySlug = groq`
   ${documentFields}
 }`;
 
-export const getUserByEmail = groq`
-*[(_type == 'user' && email == $email) && ${accessCheck}] | order(_updatedAt desc)[0] {
-  _id,
-  _type,
-  _updatedAt,
-  email,
-  "hash": hash.current,  
-}`;
-
-export const getUserById = groq`
-*[(_type == 'user' && _id == $id) && ${accessCheck}] | order(_updatedAt desc)[0] {
-  _id,
-  _type,
-  _updatedAt,
-  email,
-  "hash": hash.current,  
+// Images
+export const getAllImages = groq`
+*[(_type == 'bild') && ${visibilityChecker}] | order(_updatedAt desc) {
+  title, image, description
 }`;
 
 // Site Config specific Queries
