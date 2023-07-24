@@ -2,22 +2,24 @@ name: Sanity Dataset Backup
 on:
   schedule:
     # Run every 5 days at 07.00 GMT
-    - cron: '0 7 */5 * *'
-    # - cron: '*/10 * * * *'
+    # - cron: '0 7 */5 * *'
+    - cron: '*/10 * * * *'
 jobs:
   backup-dataset:
     runs-on: ubuntu-latest
     name: Backup dataset
     steps:
       - uses: actions/checkout@v3
-      - run: npx sanity dataset export production backup.tar.gz
+      - name: Export dataset
+        uses: sanity-io/github-action-sanity@v0.3
         env:
-          SANITY_STUDIO_API_PROJECT_ID: ${{ secrets.SANITY_STUDIO_API_PROJECT_ID }}
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_BACKUP_TOKEN }}
-      - name: Upload dataset
-        uses: actions/upload-artifact@v3
         with:
-          name: production
+          args: studio dataset export production backup.tar.gz
+      - name: Upload backup.tar.gz
+        uses: actions/upload-artifact@2
+        with:
+          name: production-tarball
           path: backup.tar.gz
           # Fails the workflow if no files are found; defaults to 'warn'
           if-no-files-found: error
