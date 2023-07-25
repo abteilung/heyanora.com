@@ -308,6 +308,7 @@ export const getAuthorInformation = groq`
   *[_type == 'author'][0] {
     name,
     "image": image.asset ->,
+    "bioText": bio,
     "bio": pt::text(bio),
     "contactText": pt::text(contactText),
   }

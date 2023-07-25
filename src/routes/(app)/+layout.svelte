@@ -1,5 +1,7 @@
 <script lang="ts">
-	import '@fontsource/fira-sans-condensed/latin-300.css';
+	import '@fontsource/fira-sans-condensed/400.css';
+	import '@fontsource/fira-sans-condensed/700.css';
+
 	import '@fontsource-variable/playfair-display';
 
 	import '../../app.postcss';
