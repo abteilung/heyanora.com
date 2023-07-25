@@ -49,7 +49,7 @@ export default defineType({
 				(Rule) => Rule.max(120).warning('Bitte kurz fassen!')
 			]
 		}),
-		{
+		defineField({
 			name: 'slug',
 			title: 'Slug',
 			type: 'slug',
@@ -59,7 +59,7 @@ export default defineType({
 				maxLength: 96
 			},
 			validation: (Rule) => Rule.required()
-		},
+		}),
 		defineField({
 			name: 'image',
 			title: 'Cover Image',
@@ -71,9 +71,8 @@ export default defineType({
 		}),
 		defineField({
 			title: 'Content',
-			name: 'content',
-			type: 'pageBuilder',
-			description: 'Build your Page Blocks',
+			name: 'body',
+			type: 'blockContent',
 			group: 'default'
 		}),
 		defineField({

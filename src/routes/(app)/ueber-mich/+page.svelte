@@ -1,13 +1,14 @@
 <script lang="ts">
-	import page from '$lib/sanity/schemas/documents/page';
 	import Image from '$lib/components/Image.svelte';
+	import Button from '$lib/components/Button.svelte';
 	import PortableBlock from '$lib/components/PortableBlock.svelte';
+	import Section from '$lib/components/layout/Section.svelte';
 
 	export let data: PageData;
 	$: ({ author } = data);
 </script>
 
-<div class="container">
+<Section container>
 	<div class="grid grid-cols-5 gap-12">
 		<div>
 			<Image fitImage image={author.image} alt={author.title} />
@@ -15,9 +16,14 @@
 		<div class="col-span-4">
 			<h1>{author.name}</h1>
 			<PortableBlock content={author.bioText} />
+			<div class="mt-12 space-x-6">
+				<Button dark href={'mailto:' + data.layoutData.siteConfig.contact.email}
+					>E-Mail schreiben</Button
+				>
+				<Button hollow href={'tel:' + data.layoutData.siteConfig.contact.phone.replace(/\s/g, '')}
+					>{data.layoutData.siteConfig.contact.phone}</Button
+				>
+			</div>
 		</div>
 	</div>
-</div>
-
-<style lang="postcss">
-</style>
+</Section>

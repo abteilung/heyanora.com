@@ -12,7 +12,7 @@
 	});
 </script>
 
-{JSON.stringify(settings)}
+<!-- {JSON.stringify(settings)} -->
 
 <footer>
 	{#if isLoaded}
@@ -61,7 +61,7 @@
 
 <style lang="postcss">
 	footer {
-		@apply relative min-h-[475px] pt-40 md:pt-80;
+		@apply relative mt-24 min-h-[475px] pt-40 md:pt-80;
 	}
 
 	.backdrop {
