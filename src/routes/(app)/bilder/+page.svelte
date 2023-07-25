@@ -65,6 +65,20 @@
 			</div>
 		</div>
 	</Section>
+
+	<Section container>
+		<h3>Hast du Interesse an meinen Bildern?</h3>
+		<p>Gerne kannst du ein Bild für CHF 180.– bis CHF 360.– bei mir erwerben.</p>
+
+		<div class="mt-12 space-x-6">
+			<Button dark href={'mailto:' + data.layoutData.siteConfig.contact.email}
+				>E-Mail schreiben</Button
+			>
+			<Button hollow href={'tel:' + data.layoutData.siteConfig.contact.phone.replace(/\s/g, '')}
+				>{data.layoutData.siteConfig.contact.phone}</Button
+			>
+		</div>
+	</Section>
 {/if}
 
 <style lang="postcss">

@@ -24,12 +24,12 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_BACKUP_TOKEN }}
         with:
-          args: . dataset export production backup.tar.gz
+          args: . dataset export production backups/backup.tar.gz
       - name: Upload backup.tar.gz
         uses: actions/upload-artifact@v3
         with:
           name: production
-          path: /backup.tar.gz
+          path: backups/backup.tar.gz
           # Fails the workflow if no files are found; defaults to 'warn'
           if-no-files-found: error
           retention-days: 5

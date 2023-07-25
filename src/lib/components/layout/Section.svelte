@@ -23,7 +23,7 @@
 </script>
 
 <section class={classNames('relative', size, backgroundColor, colorMode, additionalClass)}>
-	<div class="backdrop absolute inset-0">x</div>
+	<div class="backdrop absolute inset-0" />
 	{#if title || href}
 		<div
 			class={classNames(

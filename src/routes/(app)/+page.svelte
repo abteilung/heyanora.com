@@ -10,11 +10,11 @@
 </script>
 
 <Section container>
-	<div class="grid grid-cols-5 gap-12">
+	<div class="gap-12 sm:grid sm:grid-cols-3 md:grid-cols-5">
 		<div>
 			<Image fitImage image={author.image} alt={author.title} />
 		</div>
-		<div class="col-span-4">
+		<div class="sm:col-span-2 md:col-span-4">
 			<h1>Ramona Galli-Bär</h1>
 			<p class="lead">
 				Hallo, schön, dass Du zu mir gefunden hast! Ich bin im Säuliamt gross geworden und lebe mit

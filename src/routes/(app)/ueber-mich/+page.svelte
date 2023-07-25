@@ -9,11 +9,11 @@
 </script>
 
 <Section container>
-	<div class="grid grid-cols-5 gap-12">
+	<div class="gap-12 sm:grid sm:grid-cols-3 md:grid-cols-5">
 		<div>
 			<Image fitImage image={author.image} alt={author.title} />
 		</div>
-		<div class="col-span-4">
+		<div class="sm:col-span-2 md:col-span-4">
 			<h1>{author.name}</h1>
 			<PortableBlock content={author.bioText} />
 			<div class="mt-12 space-x-6">
