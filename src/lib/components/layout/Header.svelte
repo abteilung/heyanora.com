@@ -16,7 +16,10 @@
 
 <header>
 	{#if isLoaded}
-		<div transition:fade={{ duration: 250 }} class="container">
+		<div
+			transition:fly={{ duration: 250, easing: cubicOut, x: 0, y: -500, opacity: 0 }}
+			class="container"
+		>
 			<div class="grid grid-cols-2 gap-12 sm:grid-cols-3 md:grid-cols-5">
 				<div class="placeholder:navi hidden sm:block md:col-span-2">
 					<nav>

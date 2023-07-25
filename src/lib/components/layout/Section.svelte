@@ -22,10 +22,12 @@
 	$: colorMode = bgColor === 'black' ? 'dark' : '';
 </script>
 
-<section class={classNames(size, backgroundColor, colorMode, additionalClass)}>
+<section class={classNames('relative', size, backgroundColor, colorMode, additionalClass)}>
+	<div class="backdrop absolute inset-0">x</div>
 	{#if title || href}
 		<div
 			class={classNames(
+				'content',
 				container ? 'container' : '',
 				narrow ? 'narrow-container' : '',
 				'flex items-center justify-between py-12'
@@ -68,5 +70,25 @@
 	.bg-black,
 	.bg-accent {
 		@apply text-white;
+	}
+
+	section {
+		@apply bg-transparent;
+	}
+
+	.light {
+		.backdrop {
+			@apply -z-10;
+			@apply bg-divider bg-cover bg-bottom bg-no-repeat;
+			@apply bg-light;
+		}
+		.bgColor {
+			@apply absolute inset-0 isolate z-10;
+			@apply bg-gradient-to-b from-black/20 to-black/10;
+		}
+	}
+
+	.content {
+		@apply relative z-20;
 	}
 </style>

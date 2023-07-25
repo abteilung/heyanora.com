@@ -22,7 +22,7 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_BACKUP_TOKEN }}
         with:
-          args: studio dataset export production backup.tar.gz
+          args: dataset export production backup.tar.gz
       - name: Upload backup.tar.gz
         uses: actions/upload-artifact@v3
         with:
