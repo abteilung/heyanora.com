@@ -31,7 +31,7 @@
 
 	// Todo: what if I have another structure. e.g. showroomImage?
 	$: src =
-		fitImage !== true
+		fitImage === false
 			? image
 				? urlForImage(image, width, Math.floor(calculatedHeight))
 				: dummySrc
@@ -41,7 +41,7 @@
 					Math.floor((width / image.metadata.dimensions.width) * image.metadata.dimensions.height)
 			  );
 	$: largeSrc =
-		fitImage !== true
+		fitImage === false
 			? image
 				? urlForImage(image, width, Math.floor(calculatedHeight))
 				: dummySrc
@@ -55,22 +55,29 @@
 </script>
 
 {#if isLoaded}
-	<div
+	<svelte:element
+		this={fitImage ? 'span' : 'div'}
 		in:fade={{ duration: 200 }}
 		out:fade={{ duration: 200 }}
-		class={classNames('image', 'relative w-full overflow-hidden', additionalClass)}
+		class={classNames('image', ' w-full', additionalClass)}
 		style={`
+		flex: ${
+			fitImage === false
+				? image && image.customRatio
+					? image.customRatio
+					: aspectRatio
+				: image.metadata.dimensions.aspectRatio.toFixed(3)
+		} 1 0%;
 		background-size: cover; 
-		background-image: url(${fitImage !== true && image && image.lqip ? image.lqip : ''}); 
-		background-color: ${fitImage !== true && image && image.bgColor ? image.bgColor : ''};
-		aspect-ratio: ${fitImage !== true && image && image.customRatio ? image.customRatio : aspectRatio};
+		background-image: url(${fitImage === false && image && image.lqip ? image.lqip : ''}); 
+		background-color: ${fitImage === false && image && image.bgColor ? image.bgColor : ''};
 		`}
 	>
 		{#if image || dummySrc}
 			<a
 				on:click|preventDefault
 				data-pswp-width={width}
-				data-pswp-height={fitImage !== true
+				data-pswp-height={fitImage === false
 					? calculatedHeight
 					: (width / image.metadata.dimensions.width) *
 					  Math.floor(image.metadata.dimensions.height)}
@@ -81,20 +88,16 @@
 				<img
 					{src}
 					alt={alt || image.alt}
-					class={classNames(
-						fitImage !== false
-							? 'absolute top-1/2 -translate-y-1/2 object-cover object-center'
-							: 'h-full w-full '
-					)}
+					class={classNames(fitImage === true ? 'h-full w-auto' : '')}
 					{width}
 					height={`${
-						fitImage !== true
+						fitImage === false
 							? calculatedHeight
 							: (width / image.metadata.dimensions.width) *
 							  Math.floor(image.metadata.dimensions.height)
 					}`}
 					style={`aspect-ratio: ${
-						fitImage !== true
+						fitImage === false
 							? image && image.customRatio
 								? image.customRatio
 								: aspectRatio
@@ -105,5 +108,5 @@
 		{:else}
 			No Source set
 		{/if}
-	</div>
+	</svelte:element>
 {/if}
