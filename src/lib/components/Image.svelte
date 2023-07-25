@@ -7,8 +7,8 @@
 
 	export let image: any;
 	export let alt: string;
-	export let width: number = image.metadata.dimensions.width || 1640;
-	export let height: number = image.metadata.dimensions.height || 1230;
+	export let width: number = image.asset?.metadata?.dimensions?.width || 1640;
+	export let height: number = image.asset?.metadata?.dimensions?.height || 1230;
 	export let aspectRatio: number = 1.777;
 	export let additionalClass: string;
 
@@ -22,13 +22,16 @@
 
 	let isLoaded: boolean = false;
 
-	// Calculate height from width and Aspect Ratio
-	$: calculatedHeight =
-		width / (image && image.customRatio ? image.customRatio.toFixed(3) : aspectRatio.toFixed(3));
-
 	onMount(() => {
 		isLoaded = true;
 	});
+
+	// Calculate height from width and Aspect Ratio
+	$: calculatedHeight =
+		width /
+		(image && image.customRatio
+			? Number(image.customRatio).toFixed(3)
+			: Number(aspectRatio).toFixed(3));
 
 	// Todo: what if I have another structure. e.g. showroomImage?
 	$: src =
@@ -67,7 +70,7 @@
 				? image && image.customRatio
 					? image.customRatio
 					: aspectRatio
-				: image.metadata.dimensions.aspectRatio.toFixed(3)
+				: Number(image.metadata.dimensions.aspectRatio).toFixed(3)
 		} 1 0%;
 		background-size: cover; 
 		background-image: url(${fitImage === false && image && image.lqip ? image.lqip : ''}); 
@@ -104,7 +107,7 @@
 							? image && image.customRatio
 								? image.customRatio
 								: aspectRatio
-							: image.metadata.dimensions.aspectRatio.toFixed(3)
+							: Number(image.metadata.dimensions.aspectRatio).toFixed(3)
 					} `}
 				/>
 			</svelte:element>
