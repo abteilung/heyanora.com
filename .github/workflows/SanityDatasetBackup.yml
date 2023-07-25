@@ -28,8 +28,8 @@ jobs:
       - name: Upload backup.tar.gz
         uses: actions/upload-artifact@v3
         with:
-          name: production-tarball
-          path: backup.tar.gz
+          name: production
+          path: /backup.tar.gz
           # Fails the workflow if no files are found; defaults to 'warn'
           if-no-files-found: error
           retention-days: 5
