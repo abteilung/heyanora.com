@@ -12,7 +12,7 @@ const config = {
 
 		extend: {
 			backgroundImage: {
-				divider: 'url(./Watercolor-Divider.png)',
+				divider: 'url(./watercolor-divider.png)',
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))'
 			},
 			colors: {
