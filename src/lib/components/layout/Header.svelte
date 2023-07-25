@@ -61,7 +61,7 @@
 
 <style lang="postcss">
 	header {
-		@apply min-h-[475px];
+		@apply min-h-[230px] md:min-h-[475px];
 		@apply bg-black/20 bg-divider bg-cover bg-bottom bg-no-repeat py-4 sm:py-12;
 	}
 

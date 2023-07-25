@@ -8,9 +8,10 @@
 	// Create Array of 4 Objects of links with Label and href
 	export let navMenuMobile: any = [
 		{ label: 'Home', href: '/' },
+		{ label: 'Über mich', href: '/ueber-mich' },
+		{ label: 'Session', href: '/session' },
 		{ label: 'Bilder', href: '/bilder' },
-		{ label: 'Kontakt', href: '/kontakt' },
-		{ label: 'Impressum', href: '/impressum' }
+		{ label: 'Kontakt', href: '/kontakt' }
 	];
 
 	export let ariaLabel = 'toggle menu';
@@ -30,7 +31,7 @@
 	on:click={onClick}
 	aria-expanded={open}
 	aria-label={ariaLabel}
-	class="md:hidden flex cursor-pointer overflown-hidden items-center z-20 border-transparent focus:border-transparent focus:ring-0 focus:outline-none"
+	class="overflown-hidden z-20 flex cursor-pointer items-center border-transparent focus:border-transparent focus:outline-none focus:ring-0 md:hidden"
 	class:text-white={open}
 >
 	<svg class:open viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" {width}>
@@ -48,7 +49,7 @@
 
 {#if open}
 	<div
-		class="bg-black/30 backdrop-blur-md inset-0 fixed top-0 left-0 w-full h-full flex items-center text-white"
+		class="fixed inset-0 left-0 top-0 flex h-full w-full items-center bg-black/30 text-white backdrop-blur-md"
 		in:fade={{ duration: 400 }}
 		out:fade={{ duration: 400 }}
 	>
@@ -56,7 +57,9 @@
 			{#if navMenuMobile}
 				<ul>
 					{#each navMenuMobile as menuItem}
-						<li on:click={onClick}>xxx</li>
+						<li class="text-2xl" on:click={onClick}>
+							<a href={menuItem.href}>{menuItem.label} </a>
+						</li>
 					{/each}
 				</ul>
 			{/if}
