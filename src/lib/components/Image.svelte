@@ -13,6 +13,7 @@
 	export let additionalClass: string;
 
 	export let fitImage: boolean = false;
+	export let isGallery: boolean = false;
 
 	export { additionalClass as class };
 
@@ -74,21 +75,23 @@
 		`}
 	>
 		{#if image || dummySrc}
-			<a
+			<svelte:element
+				this={isGallery ? 'a' : 'span'}
 				on:click|preventDefault
-				data-pswp-width={width}
-				data-pswp-height={fitImage === false
-					? calculatedHeight
-					: (width / image.metadata.dimensions.width) *
-					  Math.floor(image.metadata.dimensions.height)}
-				target="_blank"
-				rel="noreferrer"
-				href={largeSrc}
+				data-pswp-width={isGallery ? width : null}
+				data-pswp-height={isGallery
+					? fitImage === false
+						? calculatedHeight
+						: (width / image.metadata.dimensions.width) *
+						  Math.floor(image.metadata.dimensions.height)
+					: null}
+				target={isGallery ? '_blank' : null}
+				rel={isGallery ? 'noreferrer' : null}
+				href={isGallery ? largeSrc : null}
 			>
 				<img
 					{src}
 					alt={alt || image.alt}
-					class={classNames(fitImage === true ? 'h-full w-auto' : '')}
 					{width}
 					height={`${
 						fitImage === false
@@ -104,7 +107,7 @@
 							: image.metadata.dimensions.aspectRatio.toFixed(3)
 					} `}
 				/>
-			</a>
+			</svelte:element>
 		{:else}
 			No Source set
 		{/if}

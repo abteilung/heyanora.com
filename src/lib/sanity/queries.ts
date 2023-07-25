@@ -304,6 +304,15 @@ export const getProductBySlug = groq`
   ${documentFields}
 }`;
 
+export const getAuthorInformation = groq`
+  *[_type == 'author'][0] {
+    name,
+    "image": image.asset ->,
+    "bio": pt::text(bio),
+    "contactText": pt::text(contactText),
+  }
+`;
+
 // Images
 export const getAllImages = groq`
 *[(_type == 'bild') && ${visibilityChecker}] | order(_updatedAt desc) {

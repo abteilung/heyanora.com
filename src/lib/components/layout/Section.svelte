@@ -32,7 +32,7 @@
 			)}
 		>
 			{#if title}
-				<h2 class="mb-0">{title}</h2>
+				<h2 class="mx-auto mb-0">{title}</h2>
 			{/if}
 			{#if href}
 				<Button hollow {href}>{linkText}</Button>

@@ -16,7 +16,7 @@ export default defineType({
 		defineField({
 			name: 'image',
 			title: 'Portrait Image',
-			type: 'customImage',
+			type: 'image',
 			validation: (Rule) => Rule.required()
 		}),
 		defineField({
@@ -49,7 +49,7 @@ export default defineType({
 		select: {
 			title: 'name',
 			subtitle: 'email',
-			media: 'image.image'
+			media: 'image'
 		}
 	}
 });

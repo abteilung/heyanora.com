@@ -42,41 +42,40 @@
 		Lebensfreude und vollstem Vertrauen zu meistern.
 	</p>
 </Section>
-
 {#if allImages}
 	<Section container title="Beispielbilder">
 		<div class="pswp-gallery space-y-4" id={galleryID}>
 			<div class="flex space-x-4">
 				{#each allImages as image, i}
-					{#if i <= 2}
-						<Image fitImage image={image.image} width={1200} class="rounded-lg" />
+					{#if i <= random}
+						<Image isGallery fitImage image={image.image} width={1200} class="rounded-lg" />
 					{/if}
 				{/each}
 			</div>
 			<div class="flex space-x-4">
 				{#each allImages as image, i}
-					{#if i > 2 && i <= 6}
-						<Image fitImage image={image.image} width={1200} class="rounded-lg" />
+					{#if i > random && i <= random * 2}
+						<Image isGallery fitImage image={image.image} width={1200} class="rounded-lg" />
 					{/if}
 				{/each}
 			</div>
-
 			<div class="flex space-x-4">
 				{#each allImages as image, i}
-					{#if i > 6}
-						<Image fitImage image={image.image} width={1200} class="rounded-lg" />
+					{#if i > random * 2 && i <= random * 3}
+						<Image isGallery fitImage image={image.image} width={1200} class="rounded-lg" />
+					{/if}
+				{/each}
+			</div>
+			<div class="flex space-x-4">
+				{#each allImages as image, i}
+					{#if i > random * 3 && i <= random * 4}
+						<Image isGallery fitImage image={image.image} width={1200} class="rounded-lg" />
 					{/if}
 				{/each}
 			</div>
 		</div>
 	</Section>
 {/if}
-
-<div class="flex items-stretch bg-red-200">
-	<div class=" bg-red-500 py-12">x</div>
-	<div class=" bg-red-500 py-12">x</div>
-	<div class=" bg-red-500 py-12">x</div>
-</div>
 
 <style lang="postcss">
 </style>

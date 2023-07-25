@@ -1,8 +1,18 @@
+<script lang="ts">
+	import page from '$lib/sanity/schemas/documents/page';
+	import Image from '$lib/components/Image.svelte';
+
+	export let data: PageData;
+	$: ({ author } = data);
+</script>
+
 <div class="container">
 	<div class="grid grid-cols-5 gap-12">
-		<div>Portrait</div>
+		<div>
+			<Image fitImage image={author.image} alt={author.title} />
+		</div>
 		<div class="col-span-4">
-			<h1>Ramona Galli-Bär</h1>
+			<h1>{author.name}</h1>
 			<p class="lead">
 				Ich bin die Ramona bin im Säuliamt gross geworden und lebe mit meinem Mann und meiner
 				Tochter immer noch in dieser Gegend.
@@ -73,3 +83,6 @@
 		</div>
 	</div>
 </div>
+
+<style lang="postcss">
+</style>
