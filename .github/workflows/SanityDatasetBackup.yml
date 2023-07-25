@@ -2,7 +2,9 @@ name: Sanity Dataset Backup
 on:
   schedule:
     # Run at 5 past 10 every friday
-    - cron: '0 19 * * 5'
+    # - cron: '0 19 * * 5'
+    # Run every 10 minutes
+    - cron: '*/10 * * * *'
 jobs:
   backup-dataset:
     runs-on: ubuntu-latest
