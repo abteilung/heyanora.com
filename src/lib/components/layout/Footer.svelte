@@ -26,7 +26,7 @@
 				<h3 class="mb-4 text-2xl text-accent">Heryanora</h3>
 				<nav>
 					<ul>
-						<li><a href="#">Über mich</a></li>
+						<li><a href="/ueber-mich">Über mich</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -34,8 +34,8 @@
 				<h3 class="mb-4 text-2xl text-accent">Angebot</h3>
 				<nav>
 					<ul>
-						<li><a href="#">Session</a></li>
-						<li><a href="#">Bilder</a></li>
+						<li><a href="/session">Session</a></li>
+						<li><a href="/bilder">Bilder</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -50,8 +50,13 @@
 				<h3 class="mb-4 text-2xl text-accent">Kontakt</h3>
 				<nav>
 					<ul>
-						<li>+41 79 744 33 35</li>
-						<li><a href="#">monabaer@gmx.netf</a></li>
+						<li>
+							<a href={'tel:' + settings.contact.phone.replace(/\s/g, '')}
+								>{settings.contact.phone}</a
+							>
+						</li>
+
+						<li><a href={'mailto:' + settings.contact.email}>{settings.contact.email}</a></li>
 					</ul>
 				</nav>
 			</div>
