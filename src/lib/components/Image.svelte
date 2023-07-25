@@ -59,7 +59,7 @@
 		this={fitImage ? 'span' : 'div'}
 		in:fade={{ duration: 200 }}
 		out:fade={{ duration: 200 }}
-		class={classNames('image', ' w-full', additionalClass)}
+		class={classNames('image', 'w-full overflow-hidden', additionalClass)}
 		style={`
 		flex: ${
 			fitImage === false

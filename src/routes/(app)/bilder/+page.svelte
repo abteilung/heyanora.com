@@ -48,14 +48,22 @@
 		<div class="pswp-gallery space-y-4" id={galleryID}>
 			<div class="flex space-x-4">
 				{#each allImages as image, i}
-					{#if i <= 3}
+					{#if i <= 2}
 						<Image fitImage image={image.image} width={1200} class="rounded-lg" />
 					{/if}
 				{/each}
 			</div>
 			<div class="flex space-x-4">
 				{#each allImages as image, i}
-					{#if i > 3}
+					{#if i > 2 && i <= 6}
+						<Image fitImage image={image.image} width={1200} class="rounded-lg" />
+					{/if}
+				{/each}
+			</div>
+
+			<div class="flex space-x-4">
+				{#each allImages as image, i}
+					{#if i > 6}
 						<Image fitImage image={image.image} width={1200} class="rounded-lg" />
 					{/if}
 				{/each}
