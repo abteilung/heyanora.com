@@ -41,10 +41,14 @@
 			</div>
 			<div>
 				<h3 class="mb-4 text-2xl text-accent">Standort</h3>
-				<p>
-					Heryanora<br />Alte Affolternstrasse 2<br />8909 Zwillikon
-				</p>
-				<p><a href="#">Routenplaner</a></p>
+				<ul>
+					{#each settings.contact.locations as address}
+						<li>{address.name}</li>
+						<li>{address.address}</li>
+						<li>{address.zip} {address.city}</li>
+					{/each}
+				</ul>
+				<p><a href="https://goo.gl/maps/vUeETaaBykRzUKrx7" target="_blank">Routenplaner</a></p>
 			</div>
 			<div>
 				<h3 class="mb-4 text-2xl text-accent">Kontakt</h3>
@@ -65,6 +69,9 @@
 </footer>
 
 <style lang="postcss">
+	a {
+		@apply hover:underline;
+	}
 	footer {
 		@apply relative mt-24 min-h-[475px] pt-40 md:pt-80;
 	}

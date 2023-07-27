@@ -48,9 +48,9 @@
 							<li>
 								<a href="./bilder">Bilder</a>
 							</li>
-							<li>
+							<!-- <li>
 								<a href="./kontakt">Kontakt</a>
-							</li>
+							</li> -->
 						</ul>
 					</nav>
 				</div>

@@ -10,8 +10,7 @@
 		{ label: 'Home', href: '/' },
 		{ label: 'Über mich', href: '/ueber-mich' },
 		{ label: 'Session', href: '/session' },
-		{ label: 'Bilder', href: '/bilder' },
-		{ label: 'Kontakt', href: '/kontakt' }
+		{ label: 'Bilder', href: '/bilder' }
 	];
 
 	export let ariaLabel = 'toggle menu';
