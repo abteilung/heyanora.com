@@ -25,10 +25,10 @@
 					<nav>
 						<ul>
 							<li>
-								<a href="./ueber-mich">Über mich</a>
+								<a href="./">Home</a>
 							</li>
 							<li>
-								<a href="./session">Session</a>
+								<a href="./ueber-mich">Über mich</a>
 							</li>
 						</ul>
 					</nav>
@@ -45,6 +45,9 @@
 				<div class="navi hidden sm:block md:col-span-2">
 					<nav class="flex justify-end">
 						<ul>
+							<li>
+								<a href="./session">Session</a>
+							</li>
 							<li>
 								<a href="./bilder">Bilder</a>
 							</li>

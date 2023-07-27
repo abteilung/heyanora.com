@@ -15,7 +15,7 @@
 			<Image fitImage image={author.image} alt={author.title} />
 		</div>
 		<div class="sm:col-span-2 md:col-span-4">
-			<h1>Ramona Galli-Bär</h1>
+			<h1>{author.name}</h1>
 			<p class="lead">
 				Hallo, schön, dass Du zu mir gefunden hast! Ich bin im Säuliamt gross geworden und lebe mit
 				meinem Mann und meiner Tochter immer noch in dieser Gegend.
@@ -27,7 +27,7 @@
 	<img src="calendar.svg" /> -->
 </Section>
 
-<Section title="Session" container>
+<Section title="Session" container class="light">
 	<div>
 		<img src="time.svg" />
 		<h3>Wie lange dauert eine Session und was kostet sie?</h3>
@@ -46,5 +46,11 @@
 				>{data.layoutData.siteConfig.contact.phone}</Button
 			>
 		</div>
+	</div>
+</Section>
+
+<Section title="Gerne bin ich für Dich da!" container>
+	<div class="mx-auto w-2/3">
+		<PortableBlock content={author.contact} />
 	</div>
 </Section>
