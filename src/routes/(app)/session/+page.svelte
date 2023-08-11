@@ -44,7 +44,7 @@
 	<div>
 		<img src="time.svg" />
 		<h3>Wie lange dauert eine Session und was kostet sie?</h3>
-		<p>Eine Session dauert bis 90 Minuten und kostet CHF 180.–.</p>
+		<p>Eine Session dauert bis 120 Minuten und kostet CHF 200.–.</p>
 	</div>
 	<div>
 		<img src="calendar.svg" />
