@@ -48,7 +48,7 @@
 						<li>{address.zip} {address.city}</li>
 					{/each}
 				</ul>
-				<p><a href="https://goo.gl/maps/vUeETaaBykRzUKrx7" target="_blank">Routenplaner</a></p>
+				<p><a href="https://maps.app.goo.gl/tMtcB7s4FT6QEjdt6" target="_blank">Routenplaner</a></p>
 			</div>
 			<div>
 				<h3 class="mb-4 text-2xl text-accent">Kontakt</h3>
