@@ -9,7 +9,7 @@ import app from '../config/app';
 
 /*-------------- PLUGINS --------------*/
 import { visionTool } from '@sanity/vision';
-import { deskTool } from 'sanity/desk';
+import { structureTool } from 'sanity/structure';
 import { media } from 'sanity-plugin-media';
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash';
 /*------------------------------------*/
@@ -119,7 +119,7 @@ export default defineConfig({
 		// If you want to add more schemas, you can add them here
 	},
 	plugins: [
-		deskTool({
+		structureTool({
 			structure: structure
 			// `defaultDocumentNode is responsible for adding a “Preview” tab to the document pane
 			// You can add any React component to `S.view.component` and it will be rendered in the pane
