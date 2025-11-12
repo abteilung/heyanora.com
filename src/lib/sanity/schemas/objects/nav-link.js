@@ -21,7 +21,7 @@ export default {
       name: 'url',
       type: 'url',
       description: 'enter an external URL',
-      validation: (Rule) =>
+      validation: (/** @type {any} */ Rule) =>
         Rule.uri({
           scheme: ['http', 'https', 'mailto', 'tel']
         })

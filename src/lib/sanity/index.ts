@@ -22,18 +22,18 @@ export const responsiveImage = (
   srcs = '780,1280,1920',
   sizes: string = '100vw'
 ) => {
-  const sizeArray: array = srcs.split(',')
-  const firstSize: number = sizeArray[0]
-  const lastSize: number = sizeArray[sizeArray.length - 1]
+  const sizeArray: string[] = srcs.split(',')
+  const firstSize: string = sizeArray[0]
+  const lastSize: string = sizeArray[sizeArray.length - 1]
   const srcSetContent = sizeArray
-    .map((size) => {
-      const url = urlForImage(source).width(size).auto('format').fit('max').url()
+    .map((size: string) => {
+      const url = urlForImage(source, sanityConfig).width(parseInt(size)).auto('format').fit('max').url()
       return `${url} ${size}w`
     })
     .join(',')
 
-  return `<img 
-			src="${urlForImage(source).width(firstSize)}"
+  return `<img
+			src="${urlForImage(source, sanityConfig).width(parseInt(firstSize))}"
 			${classList ? "class='" + classList + "'" : ''}
 			${alt ? "alt='" + alt + "'" : 'image'}
 			srcset="${srcSetContent}"
