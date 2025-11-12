@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(node --version:*)"
+      "Bash(node --version:*)",
+      "Bash(pnpm run check:*)",
+      "Bash(pnpm install:*)"
     ],
     "deny": [],
     "ask": []
