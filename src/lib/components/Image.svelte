@@ -7,8 +7,8 @@
 
 	export let image: any;
 	export let alt: string;
-	export let width: number = image.asset?.metadata?.dimensions?.width || 1640;
-	export let height: number = image.asset?.metadata?.dimensions?.height || 1230;
+	export let width: number = 1640;
+	export let height: number = 1230;
 	export let aspectRatio: number = 1.777;
 	export let additionalClass: string;
 
@@ -39,23 +39,27 @@
 			? image
 				? urlForImage(image, width, Math.floor(calculatedHeight))
 				: dummySrc
-			: urlForImage(
+			: image?.metadata?.dimensions
+			? urlForImage(
 					image,
 					width,
 					Math.floor((width / image.metadata.dimensions.width) * image.metadata.dimensions.height)
-			  );
+			  )
+			: dummySrc;
 	$: largeSrc =
 		fitImage === false
 			? image
 				? urlForImage(image, width, Math.floor(calculatedHeight))
 				: dummySrc
-			: urlForImage(
+			: image?.metadata?.dimensions
+			? urlForImage(
 					image,
 					width,
 					Math.floor(
 						(width / image.metadata.dimensions.width) * Math.floor(image.metadata.dimensions.height)
 					)
-			  );
+			  )
+			: dummySrc;
 </script>
 
 {#if isLoaded}
@@ -70,10 +74,12 @@
 				? image && image.customRatio
 					? image.customRatio
 					: aspectRatio
-				: Number(image.metadata.dimensions.aspectRatio).toFixed(3)
+				: image?.metadata?.dimensions?.aspectRatio
+					? Number(image.metadata.dimensions.aspectRatio).toFixed(3)
+					: aspectRatio
 		} 1 0%;
-		background-size: cover; 
-		background-image: url(${fitImage === false && image && image.lqip ? image.lqip : ''}); 
+		background-size: cover;
+		background-image: url(${fitImage === false && image && image.lqip ? image.lqip : ''});
 		background-color: ${fitImage === false && image && image.bgColor ? image.bgColor : ''};
 		`}
 	>
@@ -85,8 +91,10 @@
 				data-pswp-height={isGallery
 					? fitImage === false
 						? calculatedHeight
-						: (width / image.metadata.dimensions.width) *
+						: image?.metadata?.dimensions
+						? (width / image.metadata.dimensions.width) *
 						  Math.floor(image.metadata.dimensions.height)
+						: calculatedHeight
 					: null}
 				target={isGallery ? '_blank' : null}
 				rel={isGallery ? 'noreferrer' : null}
@@ -99,15 +107,19 @@
 					height={`${
 						fitImage === false
 							? calculatedHeight
-							: (width / image.metadata.dimensions.width) *
+							: image?.metadata?.dimensions
+							? (width / image.metadata.dimensions.width) *
 							  Math.floor(image.metadata.dimensions.height)
+							: calculatedHeight
 					}`}
 					style={`aspect-ratio: ${
 						fitImage === false
 							? image && image.customRatio
 								? image.customRatio
 								: aspectRatio
-							: Number(image.metadata.dimensions.aspectRatio).toFixed(3)
+							: image?.metadata?.dimensions?.aspectRatio
+							? Number(image.metadata.dimensions.aspectRatio).toFixed(3)
+							: aspectRatio
 					} `}
 				/>
 			</svelte:element>

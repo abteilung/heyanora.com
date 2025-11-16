@@ -307,7 +307,7 @@ export const getProductBySlug = groq`
 export const getAuthorInformation = groq`
   *[_type == 'author'][0] {
     name,
-    "image": image.asset ->,
+    ${imageMeta},
     "bioText": bio,
     "contact": contactText,
     "bio": pt::text(bio),
