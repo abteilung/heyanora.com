@@ -12,12 +12,6 @@ const visibilityChecker = `
   && (pub.unpublishedAt == null || pub.unpublishedAt > now()))
 `;
 
-const accessCheck = `
-  (access.isHidden != true ||
-  (access.publishedAt < now() || access.publishedAt == null) 
-  && (access.unpublishedAt == null || access.unpublishedAt > now()))
-`;
-
 // Define URLs for all our link types
 const linkTypes = groq`
   "href": slug.current,
@@ -84,14 +78,11 @@ const link = `
 // Is it really image->altText?
 
 const imageMeta = groq`
+  ...image,
   "alt": coalesce(image.alt, image->altText),
-  "asset": image.asset ->,
-  image,
-  "src": image,
-  "customRatio": image.customRatio,
-  "type": image.asset->mimeType,
   "lqip": image.asset->metadata.lqip,
-  "bgColor": image.asset->metadata.palette.dominant.background
+  "bgColor": image.asset->metadata.palette.dominant.background,
+  "metadata": image.asset->metadata
 `;
 
 const modules = groq`
@@ -307,7 +298,9 @@ export const getProductBySlug = groq`
 export const getAuthorInformation = groq`
   *[_type == 'author'][0] {
     name,
-    ${imageMeta},
+    "image": {
+      ${imageMeta}
+    },
     "bioText": bio,
     "contact": contactText,
     "bio": pt::text(bio),

@@ -9,10 +9,26 @@ export const imageBuilder = createImageUrlBuilder(sanityConfig)
 
 /**
  * Set up a helper function for generating Image URLs with only the asset reference data in your documents.
+ * Automatically respects hotspot and crop settings from Sanity backend.
  * Read more: https://www.sanity.io/docs/image-url
  **/
-export const urlForImage = (source: SanityImageSource, width: number, height: number) => {
-  return imageBuilder.image(source).width(width).height(height).auto('format').fit('crop')
+export const urlForImage = (
+  source: SanityImageSource,
+  width: number,
+  height?: number,
+  fitMode: 'crop' | 'max' | 'fill' = 'crop'
+) => {
+  // Start building the image URL - this automatically includes hotspot/crop data from the asset
+  let builder = imageBuilder.image(source).width(width).auto('format')
+
+  // For crop mode, height is required for proper cropping
+  // For max/fill modes, height is optional but recommended for better control
+  if (height !== undefined && height > 0) {
+    builder = builder.height(height)
+  }
+
+  // Apply fit mode - hotspot data will be respected automatically
+  return builder.fit(fitMode)
 }
 
 export const responsiveImage = (

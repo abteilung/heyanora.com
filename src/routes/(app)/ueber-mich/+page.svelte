@@ -11,7 +11,7 @@
 <Section container>
 	<div class="gap-12 sm:grid sm:grid-cols-3 md:grid-cols-5">
 		<div class="mb-8">
-			<Image fitImage image={author.image} alt={author.title} />
+			<Image image={author.image} alt={author.name} width={500} height={500} fit="crop" />
 		</div>
 		<div class="sm:col-span-2 md:col-span-4">
 			<h1>{author.name}</h1>

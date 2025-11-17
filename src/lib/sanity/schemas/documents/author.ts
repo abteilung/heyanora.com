@@ -17,6 +17,9 @@ export default defineType({
 			name: 'image',
 			title: 'Portrait Image',
 			type: 'image',
+			options: {
+				hotspot: true // Enables hotspot and cropping in Sanity Studio
+			},
 			validation: (Rule) => Rule.required()
 		}),
 		defineField({

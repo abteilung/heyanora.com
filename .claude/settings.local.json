@@ -5,7 +5,12 @@
       "Bash(pnpm run check:*)",
       "Bash(pnpm install:*)",
       "Bash(pnpm why:*)",
-      "Bash(pnpm run build:*)"
+      "Bash(pnpm run build:*)",
+      "Bash(pnpm run dev:*)",
+      "WebSearch",
+      "WebFetch(domain:www.sanity.io)",
+      "WebFetch(domain:github.com)",
+      "Bash(node test-image-data.js:*)"
     ],
     "deny": [],
     "ask": []
